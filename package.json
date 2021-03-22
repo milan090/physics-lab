@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt build",
+    "build": "nuxt generate",
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
@@ -23,6 +23,7 @@
     "core-js": "^3.9.1",
     "matter-js": "^0.16.1",
     "nuxt": "^2.15.3",
+    "poly-decomp": "^0.3.0",
     "vue-feather-icons": "^5.1.0"
   },
   "devDependencies": {

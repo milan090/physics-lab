@@ -41,7 +41,9 @@
 
 <script>
 import SimulationPreview from "../components/SimulationPreview";
-const test = import("../utils/newtons-cradle-preview.matter");
+const newtonsCradlePreviewModule = import(
+  "../utils/newtons-cradle-preview.matter"
+);
 
 export default {
   components: {
@@ -90,8 +92,8 @@ export default {
     };
   },
   async mounted() {
-    const mod = await test;
-    mod.initializeNewtonsCradlePreview();
+    const { initializeNewtonsCradlePreview } = await newtonsCradlePreviewModule;
+    initializeNewtonsCradlePreview();
   },
 };
 </script>
