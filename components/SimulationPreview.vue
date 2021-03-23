@@ -40,7 +40,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 $background-color: #151719;
 $primary-dark: #2c5bd1;
 $text-primary: #eceded;

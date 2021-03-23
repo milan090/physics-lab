@@ -17,5 +17,6 @@ module.exports = {
   rules: {
     quotes: ["warn", "double"],
     semi: ["warn", "always"],
+    "vue/attribute-hyphenation": ["warn", "never"],
   },
 };

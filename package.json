@@ -24,7 +24,8 @@
     "matter-js": "^0.16.1",
     "nuxt": "^2.15.3",
     "poly-decomp": "^0.3.0",
-    "vue-feather-icons": "^5.1.0"
+    "vue-feather-icons": "^5.1.0",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^6.0.0",

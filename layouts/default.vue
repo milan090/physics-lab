@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <Nuxt />
-  </div>
+  <Nuxt />
 </template>
 
 <style lang="scss">
@@ -14,7 +12,7 @@ $text-primary: #eceded;
 $text-dim: #9ca9b3;
 
 $font-xl: 3rem;
-$font-base: 1.05rem;
+$font-base: 1rem;
 $font-sm: 1.125rem;
 $font-xsm: 1rem;
 

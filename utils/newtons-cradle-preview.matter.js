@@ -1,36 +1,39 @@
-import { Body, Composites, World } from "matter-js";
+import { Body, Composites, Mouse, MouseConstraint, World } from "matter-js";
 import { createWorld } from "./common.matter";
 
 export const initializeNewtonsCradlePreview = () => {
   // Initializing world
-  console.log(document);
   const canvas = document.getElementById("newtons-cradle-hero");
-  console.log(canvas);
+
+  if (!canvas) throw new Error("canvas element missing");
+
   const sizes = { height: 350, width: 650 };
-  const { world } = createWorld(canvas, {
+  const { world, render, engine } = createWorld(canvas, {
     sizes,
     renderOptions: { wireframes: true },
   });
 
-  const cradle = Composites.newtonsCradle(200, 50, 5, 30, 200);
+  const cradle = Composites.newtonsCradle(200, 50, 5, 25, 200);
 
-  Body.translate(cradle.bodies[0], { x: -140, y: -100 });
-  setInterval(() => {
-    if (!canvas.hidden) {
-      Body.translate(cradle.bodies[0], { x: -140, y: -100 });
-    }
-  }, 10000);
+  Body.translate(cradle.bodies[0], { x: -200, y: -150 });
+  // setInterval(() => {
+  //   console.log("Again");
+  //   if (!canvas.hidden) {
+  //     Body.translate(cradle.bodies[0], { x: -140, y: -100 });
+  //   }
+  // }, 10000);
 
-  // const mouse = Mouse.create(render.canvas);
-  // const mouseConstraint = MouseConstraint.create(engine, {
-  //   mouse,
-  //   constraint: {
-  //     stiffness: 1,
-  //     render: {
-  //       visible: false,
-  //     }
-  //   } as any
-  // })
+  // ~~~~~~~~~~ Mouse Control ~~~~~~~~~~
+  const mouse = Mouse.create(render.canvas);
+  const mouseConstraint = MouseConstraint.create(engine, {
+    mouse,
+    constraint: {
+      stiffness: 1,
+      render: {
+        visible: false,
+      },
+    },
+  });
 
-  World.add(world, [cradle]);
+  World.add(world, [cradle, mouseConstraint]);
 };
