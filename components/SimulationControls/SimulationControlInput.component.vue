@@ -71,10 +71,11 @@ export default {
 .input {
   display: flex;
   width: 100%;
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.45rem;
+  color: rgb(206, 206, 206);
 
   input {
     width: 50%;

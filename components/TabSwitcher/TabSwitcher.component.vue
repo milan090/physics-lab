@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$font-base: 1.05rem;
+$font-base: 1.1rem;
 $background-light: #20272f;
 
 nav {

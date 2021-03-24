@@ -26,8 +26,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$font-base: 0.85rem;
-$font-sm: 0.75rem;
+$font-base: 1.1rem;
+$font-sm: 0.85rem;
 $text-dim: #7c858c4d;
 
 .simulation-header {

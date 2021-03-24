@@ -43,10 +43,10 @@ export default {
         frictionAir: {
           label: "Air Friction",
           id: 3,
-          defaultValue: 1,
+          defaultValue: 0.5,
           min: 0,
-          max: 5,
-          step: 0.5,
+          max: 1,
+          step: 0.05,
         },
         damping: {
           label: "Damping",

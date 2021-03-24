@@ -66,8 +66,8 @@ export default {
         },
         {
           id: "3",
-          url: "/simulation/newtons-cradle",
-          name: "Newtons Cradle",
+          url: "/simulation/air-resistance",
+          name: "Air Resistance",
           img: "/img/preview/newtons-cradle.jpg",
         },
         {

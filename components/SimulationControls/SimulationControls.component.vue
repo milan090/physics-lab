@@ -65,10 +65,9 @@ export default {
 $background-light: #20272f;
 
 #controls {
-  width: 13rem;
-  padding: 0.25rem;
+  width: 18rem;
   background-color: $background-light;
-  padding: 0.5rem 0.5rem;
-  border-radius: 0.25rem;
+  padding: 1rem 1rem;
+  border-radius: 0.5rem;
 }
 </style>

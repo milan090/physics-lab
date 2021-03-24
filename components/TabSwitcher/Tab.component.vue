@@ -37,6 +37,7 @@ export default {
   padding: 0.35rem 0.25rem;
   border-radius: 0.5rem;
   transition: background-color 100ms ease-out;
+  cursor: pointer;
 
   &:hover {
     background-color: #434b5266;
