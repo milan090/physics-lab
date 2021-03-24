@@ -35,10 +35,15 @@ export default {
 .tab {
   outline: none;
   padding: 0.35rem 0.25rem;
+  border-radius: 0.5rem;
+  transition: background-color 100ms ease-out;
+
+  &:hover {
+    background-color: #434b5266;
+  }
 
   &.active {
-    background: #434b52;
-    border-radius: 0.5rem;
+    background-color: #434b52;
   }
 }
 </style>

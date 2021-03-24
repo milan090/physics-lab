@@ -51,7 +51,7 @@ nav {
     border-radius: 1rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    column-gap: 0.25rem;
+    column-gap: 0.5rem;
   }
 }
 </style>
