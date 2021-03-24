@@ -60,8 +60,8 @@ export default {
         },
         {
           id: "2",
-          url: "/simulation/newtons-cradle",
-          name: "Newtons Cradle",
+          url: "/simulation/pendulum",
+          name: "Pendulum",
           img: "/img/preview/newtons-cradle.jpg",
         },
         {
@@ -118,7 +118,7 @@ $screen-md: 768px;
   min-height: 100vh;
 
   margin: 0 auto;
-  margin-top: 4.5rem;
+  margin-top: 3rem;
 
   display: flex;
   justify-content: center;

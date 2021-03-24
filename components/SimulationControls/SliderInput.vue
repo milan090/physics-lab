@@ -79,11 +79,13 @@ $slider-height: 1.25rem;
 
   .slidecontainer {
     height: $slider-height;
+
     input {
       width: 4rem;
     }
 
     .slider {
+      overflow: hidden;
       -webkit-appearance: none;
       appearance: none;
       width: 100%;

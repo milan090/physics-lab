@@ -1,6 +1,6 @@
 <template>
   <div class="simulation-header">
-    <h1 class="title gradient">Newtons Cradle</h1>
+    <h1 class="title gradient">{{ title }}</h1>
 
     <nuxt-link to="/#collection" class="go-back">
       <ArrowLeftIcon />

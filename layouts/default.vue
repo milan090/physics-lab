@@ -12,8 +12,8 @@ $text-primary: #eceded;
 $text-dim: #9ca9b3;
 
 $font-xl: 3rem;
-$font-base: 0.85rem;
-$font-sm: 0.75rem;
+$font-base: 1.1rem;
+$font-sm: 1rem;
 
 $rounded-sm: 0.25rem;
 $rounded-base: 0.5rem;
