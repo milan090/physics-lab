@@ -12,10 +12,8 @@ import { createWorld } from "./common.matter";
  *
  * @param {{ gravityMultiplier: number, restitution: number }} options - id of element in which to render the simulation
  */
-export const initializeNewtonsCradle = (
-  options = { gravityMultiplier: 1, restitution: 1 }
-) => {
-  const { gravityMultiplier = 1, restitution = 1 } = options;
+export const initializeNewtonsCradle = (options = {}) => {
+  const { gravityMultiplier = 1, restitution = 1, frictionAir = 1 } = options;
   console.log(options);
   console.log("Restitution", restitution);
   // Initializing world
@@ -36,7 +34,7 @@ export const initializeNewtonsCradle = (
   for (let i = 0; i < count; i++) {
     const pendulumn = Bodies.circle(200 + 50 * i, 250, 25, {
       friction: 0,
-      frictionAir: 0.00001,
+      frictionAir: 0.0001 * frictionAir,
       inertia: Infinity,
       slop: 1,
       restitution,

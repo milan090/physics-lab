@@ -2,7 +2,7 @@
   <div class="input-container">
     <input
       type="text"
-      :value="value"
+      :value="(Math.round(value * 100) / 100).toFixed(2)"
       class="input-value"
       @change="handleChange"
     />
@@ -62,7 +62,7 @@ $slider-height: 1.25rem;
   width: 8rem;
 
   .input-value {
-    width: 2rem;
+    width: 2.5rem;
     height: $slider-height;
     text-align: center;
     background: #434b5266;
@@ -80,7 +80,7 @@ $slider-height: 1.25rem;
   .slidecontainer {
     height: $slider-height;
     input {
-      width: 5rem;
+      width: 4rem;
     }
 
     .slider {
