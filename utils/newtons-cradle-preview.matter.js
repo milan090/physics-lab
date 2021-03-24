@@ -14,7 +14,7 @@ export const initializeNewtonsCradlePreview = () => {
   });
 
   const cradle = Composites.newtonsCradle(200, 50, 5, 25, 200);
-
+  world.gravity.scale = 0.0005;
   Body.translate(cradle.bodies[0], { x: -200, y: -150 });
   // setInterval(() => {
   //   console.log("Again");

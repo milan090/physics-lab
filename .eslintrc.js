@@ -18,5 +18,6 @@ module.exports = {
     quotes: ["warn", "double"],
     semi: ["warn", "always"],
     "vue/attribute-hyphenation": ["warn", "never"],
+    "no-unused-vars": "warn",
   },
 };

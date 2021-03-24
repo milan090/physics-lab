@@ -64,7 +64,7 @@ $screen-md: 768px;
   background-repeat: no-repeat;
 
   .collection-item-container {
-    padding: 1.5rem 0.75rem;
+    padding: 1rem 0.75rem;
     display: flex;
     width: 100%;
     height: 100%;
@@ -89,15 +89,15 @@ $screen-md: 768px;
         fill: white;
         background-color: #4d7bf2;
         cursor: pointer;
+        stroke: none;
       }
-    }
-
-    &:hover {
-      opacity: 1;
     }
   }
 
   &:hover {
+    .collection-item-container {
+      opacity: 1;
+    }
     .background-layer {
       position: absolute;
       width: 100%;

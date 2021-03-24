@@ -23,15 +23,26 @@ html {
   scroll-behavior: smooth;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body,
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+input {
   margin: 0;
   padding: 0;
+}
+
+input,
+button {
+  outline: none;
+  border: none;
 }
 
 body {
@@ -61,6 +72,17 @@ h2.title {
 
 .text-dim {
   color: $text-dim;
+}
+
+a {
+  text-decoration: none;
+  color: currentColor;
+}
+
+button {
+  border: none;
+  background: none;
+  color: white;
 }
 
 .button {
