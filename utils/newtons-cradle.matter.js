@@ -13,7 +13,12 @@ import { createWorld } from "./common.matter";
  * @param {{ gravityMultiplier: number, restitution: number }} options - id of element in which to render the simulation
  */
 export const initializeNewtonsCradle = (options = {}) => {
-  const { gravityMultiplier = 1, restitution = 1, frictionAir = 1 } = options;
+  const {
+    gravityMultiplier = 1,
+    restitution = 1,
+    frictionAir = 1,
+    damping = 0,
+  } = options;
   console.log(options);
   console.log("Restitution", restitution);
   // Initializing world
@@ -43,17 +48,12 @@ export const initializeNewtonsCradle = (options = {}) => {
     const constraint = Constraint.create({
       pointA: { x: 200 + 50 * i, y: 50 },
       bodyB: pendulumn,
+      damping,
     });
     World.add(world, [pendulumn, constraint]);
   }
 
   Body.translate(pendulumnHandles[0], { x: -200, y: -150 });
-  // setInterval(() => {
-  //   console.log("Again");
-  //   if (!canvas.hidden) {
-  //     Body.translate(cradle.bodies[0], { x: -140, y: -100 });
-  //   }
-  // }, 10000);
 
   // ~~~~~~~~~~ Mouse Control ~~~~~~~~~~
   const mouse = Mouse.create(render.canvas);

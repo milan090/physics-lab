@@ -48,6 +48,14 @@ export default {
           max: 5,
           step: 0.5,
         },
+        damping: {
+          label: "Damping",
+          id: 4,
+          defaultValue: 0,
+          min: 0,
+          max: 1,
+          step: 0.05,
+        },
       },
     };
   },
