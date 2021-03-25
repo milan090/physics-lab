@@ -23,6 +23,7 @@
     "chart.js": "^2.9.4",
     "chartjs-plugin-streaming": "^1.8.0",
     "core-js": "^3.9.1",
+    "matter-attractors": "^0.1.6",
     "matter-js": "^0.16.1",
     "nuxt": "^2.15.3",
     "poly-decomp": "^0.3.0",

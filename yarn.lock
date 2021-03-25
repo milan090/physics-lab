@@ -5440,6 +5440,11 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
+matter-attractors@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/matter-attractors/-/matter-attractors-0.1.6.tgz#f87ba132fb6cf1e58f267c6d8ffc590768683989"
+  integrity sha1-+HuhMvts8eWPJnxtj/xZB2hoOYk=
+
 matter-js@^0.16.1:
   version "0.16.1"
   resolved "https://registry.yarnpkg.com/matter-js/-/matter-js-0.16.1.tgz#2466ef8ac54595e1869a7133091124caea568af6"
