@@ -19,8 +19,7 @@ export const initializeNewtonsCradle = (options = {}) => {
     frictionAir = 1,
     damping = 0,
   } = options;
-  console.log(options);
-  console.log("Restitution", restitution);
+
   // Initializing world
   const canvas = document.getElementById("simulation");
 

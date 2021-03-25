@@ -16,12 +16,6 @@ export const initializeNewtonsCradlePreview = () => {
   const cradle = Composites.newtonsCradle(sizes.width / 3, 50, 5, 25, 200);
   world.gravity.scale = 0.0005;
   Body.translate(cradle.bodies[0], { x: -200, y: -150 });
-  // setInterval(() => {
-  //   console.log("Again");
-  //   if (!canvas.hidden) {
-  //     Body.translate(cradle.bodies[0], { x: -140, y: -100 });
-  //   }
-  // }, 10000);
 
   // ~~~~~~~~~~ Mouse Control ~~~~~~~~~~
   const mouse = Mouse.create(render.canvas);

@@ -2,6 +2,7 @@ import {
   Bodies,
   Body,
   Constraint,
+  Events,
   Mouse,
   MouseConstraint,
   World,
@@ -9,10 +10,11 @@ import {
 import { createWorld } from "./common.matter";
 
 /**
- *
+ * @onRender
  * @param {{ gravityMultiplier: number, restitution: number }} options - id of element in which to render the simulation
  */
-export const initializePendulum = (options = {}) => {
+export const initializePendulum = (onRender, options = {}) => {
+  const startTime = new Date();
   const {
     gravityMultiplier = 1,
     restitution = 1,
@@ -61,4 +63,11 @@ export const initializePendulum = (options = {}) => {
   });
 
   World.add(world, [mouseConstraint]);
+
+  const interval = setInterval(() => {
+    const timeElapsed = (new Date() - startTime) / 1000;
+    onRender(parseInt(timeElapsed), pendulumn.velocity.x);
+  }, 1000 / 12);
+
+  return interval;
 };

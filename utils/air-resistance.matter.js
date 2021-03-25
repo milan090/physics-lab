@@ -33,7 +33,7 @@ export const initializeAirResistance = (options = {}) => {
     sizes.width / 2,
     sizes.height,
     sizes.width,
-    10,
+    30,
     {
       isStatic: true,
       render: {

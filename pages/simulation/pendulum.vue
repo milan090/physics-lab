@@ -2,6 +2,9 @@
   <main>
     <SimulationPageHeader title="Pendulum" />
     <TabSwitcher />
+    <div id="graph" v-if="activeTab === 'GRAPH'">
+      <Graph :chartData="graphData" :options="graphOptions" />
+    </div>
     <div id="view">
       <canvas id="simulation"></canvas>
       <SimulationControls :simulationOptions="simulationOptions" />
@@ -13,6 +16,7 @@
 import TabSwitcher from "../../components/TabSwitcher/TabSwitcher.component";
 import SimulationPageHeader from "../../components/SimulationPageHeader";
 import SimulationControls from "../../components/SimulationControls/SimulationControls.component.vue";
+import Graph from "../../components/Graph";
 const pendulumModule = import("../../utils/pendulum.matter");
 
 export default {
@@ -20,6 +24,7 @@ export default {
     TabSwitcher,
     SimulationPageHeader,
     SimulationControls,
+    Graph,
   },
   data() {
     return {
@@ -57,22 +62,106 @@ export default {
           step: 0.05,
         },
       },
+      graphOptions: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          xAxes: [
+            {
+              display: true,
+              scaleLabel: {
+                display: true,
+                labelString: "Time in seconds (T)",
+                fontColor: "#fff",
+                fontSize: 10,
+              },
+              ticks: {
+                fontColor: "#fffE6",
+                fontSize: 14,
+                autoSkip: true,
+                maxTicksLimit: 20,
+              },
+            },
+          ],
+          yAxes: [
+            {
+              display: true,
+              scaleLabel: {
+                display: true,
+                labelString: "Velocity (v)",
+                fontColor: "#fff",
+                fontSize: 10,
+              },
+              ticks: {
+                fontColor: "#fffE6",
+                fontSize: 14,
+              },
+            },
+          ],
+        },
+      },
+      graphData: null,
+      interval: null,
     };
   },
   computed: {
     simulationOptionsValue() {
       return this.$store.state.simulationOptions.options;
     },
+    activeTab() {
+      return this.$store.state.tabs.activeTab;
+    },
   },
   watch: {
     async simulationOptionsValue(newOptions) {
-      const { initializePendulum } = await pendulumModule;
-      initializePendulum(newOptions);
+      this.resetGraph();
+      const { initializePendulum } = await pendulumModule; // DO this before clearing or might run into watch and mounted running simultaneously
+      clearInterval(this.interval);
+      this.interval = initializePendulum(this.addData, newOptions);
     },
   },
   async mounted() {
+    this.resetGraph();
     const { initializePendulum } = await pendulumModule;
-    initializePendulum();
+    this.interval = initializePendulum(this.addData, this.addData);
+  },
+  methods: {
+    resetGraph() {
+      this.graphData = {
+        labels: [],
+        datasets: [
+          {
+            label: "Velocity",
+            borderColor: "#f87979",
+            // borderWidth: 5,
+            pointRadius: 0,
+            data: [],
+          },
+        ],
+      };
+    },
+    addData(x, y) {
+      const newLabels = [...this.graphData.labels, x];
+      const newData = [...this.graphData.datasets[0].data, y];
+      if (newLabels.length > 100) {
+        newLabels.shift();
+        newData.shift();
+      }
+      this.graphData = {
+        labels: newLabels,
+        datasets: [
+          {
+            ...this.graphData.datasets[0],
+            data: newData,
+          },
+        ],
+      };
+      // this.graphData.labels.push(x);
+      // this.graphData.datasets[0].data.push(y);
+    },
+    getRandomInt() {
+      return Math.floor(Math.random() * (50 - 5 + 1)) + 5;
+    },
   },
 };
 </script>
@@ -80,6 +169,22 @@ export default {
 <style lang="scss" scoped>
 main {
   margin-top: 2rem;
+
+  #graph {
+    margin: 0 auto;
+    margin-bottom: 150px;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    background: #434b5266;
+    width: 800px;
+    position: relative;
+
+    & > div {
+      // padding: 2rem;
+      height: 400px;
+      width: 750px;
+    }
+  }
 
   #view {
     margin: 0 auto;

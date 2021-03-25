@@ -49,7 +49,6 @@ export default {
     this.simulationsOptionsComputed.forEach((e) => {
       options[e.name] = e.defaultValue;
     });
-    console.log("OPTIONS", options);
     this.setOptions(options);
   },
   methods: {

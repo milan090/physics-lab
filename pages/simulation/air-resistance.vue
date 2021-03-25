@@ -53,7 +53,7 @@ export default {
           label: "Air Resistance",
           id: 3,
           defaultValue: 0.05,
-          min: 0,
+          min: 0.0001,
           max: 1,
           step: 0.05,
         },
