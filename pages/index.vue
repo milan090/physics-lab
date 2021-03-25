@@ -62,13 +62,13 @@ export default {
           id: "2",
           url: "/simulation/pendulum",
           name: "Pendulum",
-          img: "/img/preview/newtons-cradle.jpg",
+          img: "/img/preview/pendulum.png",
         },
         {
           id: "3",
           url: "/simulation/air-resistance",
           name: "Air Resistance",
-          img: "/img/preview/newtons-cradle.jpg",
+          img: "/img/preview/air-resistance.jpg",
         },
         {
           id: "4",

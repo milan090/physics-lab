@@ -79,7 +79,7 @@ export default {
                 fontColor: "#fffE6",
                 fontSize: 14,
                 autoSkip: true,
-                maxTicksLimit: 20,
+                maxTicksLimit: 15,
               },
             },
           ],

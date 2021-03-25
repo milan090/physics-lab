@@ -57,7 +57,6 @@ export default {
   },
   methods: {
     handleChange(name, value) {
-      console.log("EVENT", name, value);
       this.setOptions({ [name]: value });
     },
     ...mapMutations({

@@ -66,7 +66,7 @@ export const initializePendulum = (onRender, options = {}) => {
 
   const interval = setInterval(() => {
     const timeElapsed = (new Date() - startTime) / 1000;
-    onRender(parseInt(timeElapsed), pendulumn.velocity.x);
+    onRender(timeElapsed.toFixed(1), pendulumn.velocity.x);
   }, 1000 / 12);
 
   return interval;
