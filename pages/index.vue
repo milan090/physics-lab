@@ -13,9 +13,9 @@
         way of learning Physics
       </p>
       <div id="cta" class="fade-up">
-        <a href="#" class="cta-button">
+        <nuxt-link to="/simulation/pendulum" class="cta-button">
           <button class="button blue">Try Now</button>
-        </a>
+        </nuxt-link>
         <a href="/#collection" class="cta-button">
           <button class="button">View Collection</button>
         </a>
