@@ -84,9 +84,9 @@ export default {
         },
         {
           id: "6",
-          url: "/simulation/newtons-cradle",
-          name: "Newtons Cradle",
-          img: "/img/preview/newtons-cradle.jpg",
+          url: "/",
+          name: "More+",
+          img: "/img/preview/coming-soon.jpg",
         },
       ],
     };
