@@ -34,7 +34,7 @@ export default {
 <style lang="scss" scoped>
 .tab {
   outline: none;
-  padding: 0.35rem 0.25rem;
+  padding: 0.4rem 2rem;
   border-radius: 0.5rem;
   transition: background-color 100ms ease-out;
   cursor: pointer;

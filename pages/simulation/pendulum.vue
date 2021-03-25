@@ -1,8 +1,8 @@
 <template>
   <main>
     <SimulationPageHeader title="Pendulum" />
-    <TabSwitcher />
-    <div id="graph" v-if="activeTab === 'GRAPH'">
+    <TabSwitcher :hasGraph="true" />
+    <div v-if="activeTab === 'GRAPH'" id="graph">
       <Graph :chartData="graphData" :options="graphOptions" />
     </div>
     <div id="view">
