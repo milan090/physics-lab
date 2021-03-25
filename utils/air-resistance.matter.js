@@ -1,5 +1,5 @@
 import { Bodies, Mouse, MouseConstraint, World } from "matter-js";
-import { createWorld } from "./common.matter";
+import { createWorld, enableScroll } from "./common.matter";
 
 /**
  *
@@ -54,6 +54,8 @@ export const initializeAirResistance = (options = {}) => {
       },
     },
   });
+
+  enableScroll(mouseConstraint);
 
   World.add(world, [mouseConstraint]);
 };

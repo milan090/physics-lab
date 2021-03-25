@@ -1,5 +1,5 @@
 import { Body, Composites, Mouse, MouseConstraint, World } from "matter-js";
-import { createWorld } from "./common.matter";
+import { createWorld, enableScroll } from "./common.matter";
 
 export const initializeNewtonsCradlePreview = () => {
   // Initializing world
@@ -28,6 +28,8 @@ export const initializeNewtonsCradlePreview = () => {
       },
     },
   });
+
+  enableScroll(mouseConstraint);
 
   World.add(world, [cradle, mouseConstraint]);
 };

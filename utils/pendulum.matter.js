@@ -7,7 +7,7 @@ import {
   MouseConstraint,
   World,
 } from "matter-js";
-import { createWorld } from "./common.matter";
+import { createWorld, enableScroll } from "./common.matter";
 
 /**
  * @onRender
@@ -68,6 +68,8 @@ export const initializePendulum = (onRender, options = {}) => {
     const timeElapsed = (new Date() - startTime) / 1000;
     onRender(timeElapsed.toFixed(1), pendulumn.velocity.x);
   }, 1000 / 12);
+
+  enableScroll(mouseConstraint);
 
   return interval;
 };

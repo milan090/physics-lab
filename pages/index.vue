@@ -78,9 +78,9 @@ export default {
         },
         {
           id: "5",
-          url: "/simulation/newtons-cradle",
-          name: "Newtons Cradle",
-          img: "/img/preview/newtons-cradle.jpg",
+          url: "/simulation/trajectory",
+          name: "Trajectory",
+          img: "/img/preview/trajectory.jpg",
         },
         {
           id: "6",

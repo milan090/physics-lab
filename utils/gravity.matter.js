@@ -9,7 +9,7 @@ import {
   Vector,
   Common,
 } from "matter-js";
-import { createWorld } from "./common.matter";
+import { createWorld, enableScroll } from "./common.matter";
 // eslint-disable-next-line no-unused-vars
 import * as MatterAttractors from "matter-attractors";
 
@@ -146,6 +146,7 @@ export const initializeGravity = (options = {}) => {
   });
 
   World.add(world, [mouseConstraint]);
+  enableScroll(mouseConstraint);
   use("matter-attractors");
 };
 

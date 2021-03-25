@@ -2,7 +2,7 @@
  * This file needs to be imported from every page specific TS file
  * This will create the World for program to run in
  */
-import { Render, Runner, Engine } from "matter-js";
+import { Render, Runner, Engine, MouseConstraint } from "matter-js";
 
 // Defaults
 let defaultOptions = {};
@@ -47,4 +47,19 @@ export const createWorld = (canvas, options = defaultOptions) => {
     render,
     world,
   };
+};
+
+/**
+ *
+ * @param {MouseConstraint} mouseConstraint
+ */
+export const enableScroll = (mouseConstraint) => {
+  mouseConstraint.mouse.element.removeEventListener(
+    "mousewheel",
+    mouseConstraint.mouse.mousewheel
+  );
+  mouseConstraint.mouse.element.removeEventListener(
+    "DOMMouseScroll",
+    mouseConstraint.mouse.mousewheel
+  );
 };

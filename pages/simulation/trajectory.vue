@@ -1,6 +1,6 @@
 <template>
   <main>
-    <SimulationPageHeader title="Gravity" />
+    <SimulationPageHeader title="Trajectory" />
     <TabSwitcher />
     <div id="view">
       <canvas id="simulation"></canvas>
@@ -13,7 +13,7 @@
 import TabSwitcher from "../../components/TabSwitcher/TabSwitcher.component";
 import SimulationPageHeader from "../../components/SimulationPageHeader";
 import SimulationControls from "../../components/SimulationControls/SimulationControls.component.vue";
-const gravityModule = import("../../utils/gravity.matter");
+const trajectoryModule = import("../../utils/trajectory.matter");
 
 export default {
   components: {
@@ -27,31 +27,18 @@ export default {
         gravityMultiplier: {
           label: "Gravity",
           id: 1,
-          defaultValue: 10,
-          min: -10,
-          max: 100,
-          step: 0.5,
-        },
-        restitution: {
-          label: "Restitution",
-          id: 2,
           defaultValue: 1,
           min: 0,
-          max: 1.5,
-          step: 0.05,
+          max: 5,
+          step: 0.5,
         },
-        planetsCount: {
-          label: "Planets Count",
-          id: 3,
-          defaultValue: 15,
+        frictionAir: {
+          label: "Air Friction",
+          id: 2,
+          defaultValue: 0.01,
           min: 0,
-          max: 100,
-          step: 1,
-        },
-        includeBoundaries: {
-          label: "Boundaries",
-          id: 4,
-          defaultValue: true,
+          max: 1,
+          step: 0.05,
         },
       },
     };
@@ -63,13 +50,13 @@ export default {
   },
   watch: {
     async simulationOptionsValue(newOptions) {
-      const { initializeGravity } = await gravityModule;
-      initializeGravity(newOptions);
+      const { initializeTrajectory } = await trajectoryModule;
+      initializeTrajectory(newOptions);
     },
   },
   async mounted() {
-    const { initializeGravity } = await gravityModule;
-    initializeGravity(this.simulationOptionsValue);
+    const { initializeTrajectory } = await trajectoryModule;
+    initializeTrajectory(this.simulationOptionsValue);
   },
 };
 </script>
