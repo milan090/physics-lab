@@ -1,6 +1,7 @@
 <template>
   <div>
     <Nuxt />
+    <footer></footer>
   </div>
 </template>
 
@@ -53,6 +54,13 @@ body {
   background-color: $background-color;
   color: $text-primary;
   font-size: $font-base;
+}
+
+footer {
+  margin-top: 5rem;
+  width: 100%;
+  height: 10rem;
+  background: #20272f;
 }
 
 h1.title,
@@ -130,5 +138,26 @@ button {
   to {
     transform: rotate(360deg);
   }
+}
+
+// Scrollbar
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #1e2833;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #3c4b5b;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 </style>
