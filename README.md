@@ -1,20 +1,10 @@
-# physics-lab
+# Physics Lab
 
-## Build Setup
+![alt text](./static/img/logo-md.png)
 
-```bash
-# install dependencies
-$ yarn install
+### Tools Used:
 
-# serve with hot reload at localhost:3000
-$ yarn dev
-
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-# generate static project
-$ yarn generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+- Vue
+- NuxtJS
+- SCSS
+- MatterJS (for physics simulation)

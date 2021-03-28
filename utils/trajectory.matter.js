@@ -1,6 +1,5 @@
 import {
   Bodies,
-  Body,
   Constraint,
   Events,
   Mouse,
