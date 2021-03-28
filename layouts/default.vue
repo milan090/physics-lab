@@ -20,6 +20,28 @@
   </div>
 </template>
 
+<script>
+import { mapMutations } from "vuex";
+
+export default {
+  computed: {
+    url() {
+      return this.$route;
+    },
+  },
+  watch: {
+    url() {
+      this.setActiveTab("SIMULATION");
+    },
+  },
+  methods: {
+    ...mapMutations({
+      setActiveTab: "tabs/setActiveTab",
+    }),
+  },
+};
+</script>
+
 <style lang="scss">
 // Variables
 // Variables
@@ -130,6 +152,17 @@ button {
   border: none;
   background: none;
   color: white;
+}
+
+#math {
+  display: flex;
+
+  div.content {
+    margin: 0 auto;
+  }
+  img {
+    filter: invert(100%) hue-rotate(180deg) !important;
+  }
 }
 
 .button {

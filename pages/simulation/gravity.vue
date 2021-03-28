@@ -1,8 +1,16 @@
 <template>
   <main>
     <SimulationPageHeader title="Gravity" />
-    <TabSwitcher />
-    <div id="view">
+    <TabSwitcher :hasMath="true" />
+    <div v-if="isMathTab" id="math">
+      <div class="content">
+        <img
+          src="https://www.gstatic.com/education/formulas2/355397047/en/newton_s_law_of_universal_gravitation.svg"
+          alt="gravity equation"
+        />
+      </div>
+    </div>
+    <div v-if="activeTab !== 'MATH'" id="view">
       <canvas id="simulation"></canvas>
       <SimulationControls :simulationOptions="simulationOptions" />
     </div>
@@ -60,16 +68,26 @@ export default {
     simulationOptionsValue() {
       return this.$store.state.simulationOptions.options;
     },
+    activeTab() {
+      return this.$store.state.tabs.activeTab;
+    },
+    isMathTab() {
+      return this.activeTab === "MATH";
+    },
   },
   watch: {
-    async simulationOptionsValue(newOptions) {
-      const { initializeGravity } = await gravityModule;
-      initializeGravity(newOptions);
+    async simulationOptionsValue() {
+      await this.initializeSimulation();
     },
   },
   async mounted() {
-    const { initializeGravity } = await gravityModule;
-    initializeGravity(this.simulationOptionsValue);
+    await this.initializeSimulation();
+  },
+  methods: {
+    async initializeSimulation() {
+      const { initializeGravity } = await gravityModule;
+      initializeGravity(this.simulationOptionsValue);
+    },
   },
 };
 </script>
