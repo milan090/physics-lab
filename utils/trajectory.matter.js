@@ -15,7 +15,11 @@ import { createWorld, enableScroll } from "./common.matter";
  *
  * @param {{ gravityMultiplier: number, restitution: number }} options - id of element in which to render the simulation
  */
-export const initializeTrajectory = (options = {}) => {
+export const initializeTrajectory = (
+  insertToGraph,
+  resetGraph,
+  options = {}
+) => {
   const { gravityMultiplier = 1, frictionAir = 0 } = options;
 
   // Initializing world
@@ -61,8 +65,11 @@ export const initializeTrajectory = (options = {}) => {
   let firing = false;
   let firingBall;
 
+  let startTime;
   Events.on(mouseConstraint, "enddrag", (e) => {
     if (e.body === ball) {
+      startTime = new Date();
+      resetGraph();
       firing = true;
     }
   });
@@ -94,12 +101,10 @@ export const initializeTrajectory = (options = {}) => {
 
   Events.on(render, "afterRender", (e) => {
     if (firingBall) {
-      if (
-        firingBall.position.x > sizes.width ||
-        firingBall.position.y > sizes.height
-      ) {
+      if (firingBall.position.y > sizes.height) {
         World.remove(world, firingBall);
         firingBall = null;
+        startTime = null;
       } else {
         trail.unshift({
           position: Vector.clone(firingBall.position),
@@ -129,4 +134,14 @@ export const initializeTrajectory = (options = {}) => {
   enableScroll(mouseConstraint);
 
   World.add(world, mouseConstraint);
+
+  return setInterval(() => {
+    if (firingBall) {
+      const timeElapsed = (new Date() - startTime) / 1000;
+      insertToGraph(
+        timeElapsed.toFixed(1),
+        Vector.magnitude(firingBall.velocity)
+      );
+    }
+  }, 1000 / 12);
 };

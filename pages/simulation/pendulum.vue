@@ -101,6 +101,9 @@ export default {
         },
       },
       graphData: null,
+
+      // The interval at which data is pushed to the graph
+      // clear this interval after rerender
       interval: null,
     };
   },
@@ -156,11 +159,6 @@ export default {
           },
         ],
       };
-      // this.graphData.labels.push(x);
-      // this.graphData.datasets[0].data.push(y);
-    },
-    getRandomInt() {
-      return Math.floor(Math.random() * (50 - 5 + 1)) + 5;
     },
   },
 };

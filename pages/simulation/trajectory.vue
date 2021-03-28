@@ -1,7 +1,10 @@
 <template>
   <main>
     <SimulationPageHeader title="Trajectory" />
-    <TabSwitcher />
+    <TabSwitcher :hasGraph="true" />
+    <div v-if="activeTab === 'GRAPH'" id="graph">
+      <Graph :chartData="graphData" :options="graphOptions" />
+    </div>
     <div id="view">
       <canvas id="simulation"></canvas>
       <SimulationControls :simulationOptions="simulationOptions" />
@@ -41,22 +44,104 @@ export default {
           step: 0.05,
         },
       },
+      graphOptions: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          xAxes: [
+            {
+              display: true,
+              scaleLabel: {
+                display: true,
+                labelString: "Time passed in seconds (T)",
+                fontColor: "#fff",
+                fontSize: 10,
+              },
+              ticks: {
+                fontColor: "#fffE6",
+                fontSize: 14,
+                autoSkip: true,
+                maxTicksLimit: 15,
+              },
+            },
+          ],
+          yAxes: [
+            {
+              display: true,
+              scaleLabel: {
+                display: true,
+                labelString: "Velocity (v)",
+                fontColor: "#fff",
+                fontSize: 10,
+              },
+              ticks: {
+                fontColor: "#fffE6",
+                fontSize: 14,
+              },
+            },
+          ],
+        },
+      },
+      graphData: null,
+      interval: null,
     };
   },
   computed: {
     simulationOptionsValue() {
       return this.$store.state.simulationOptions.options;
     },
+    activeTab() {
+      return this.$store.state.tabs.activeTab;
+    },
   },
   watch: {
     async simulationOptionsValue(newOptions) {
+      this.resetGraph();
       const { initializeTrajectory } = await trajectoryModule;
-      initializeTrajectory(newOptions);
+      initializeTrajectory(this.addData, this.resetGraph, newOptions);
     },
   },
   async mounted() {
+    this.resetGraph();
     const { initializeTrajectory } = await trajectoryModule;
-    initializeTrajectory(this.simulationOptionsValue);
+    initializeTrajectory(
+      this.addData,
+      this.resetGraph,
+      this.simulationOptionsValue
+    );
+  },
+  methods: {
+    resetGraph() {
+      this.graphData = {
+        labels: [],
+        datasets: [
+          {
+            label: "Velocity",
+            borderColor: "#f87979",
+            // borderWidth: 5,
+            pointRadius: 0,
+            data: [],
+          },
+        ],
+      };
+    },
+    addData(x, y) {
+      const newLabels = [...this.graphData.labels, x];
+      const newData = [...this.graphData.datasets[0].data, y];
+      if (newLabels.length > 100) {
+        newLabels.shift();
+        newData.shift();
+      }
+      this.graphData = {
+        labels: newLabels,
+        datasets: [
+          {
+            ...this.graphData.datasets[0],
+            data: newData,
+          },
+        ],
+      };
+    },
   },
 };
 </script>
@@ -64,6 +149,22 @@ export default {
 <style lang="scss" scoped>
 main {
   margin-top: 2rem;
+
+  #graph {
+    margin: 0 auto;
+    margin-bottom: 150px;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    background: #434b5266;
+    width: 800px;
+    position: relative;
+
+    & > div {
+      // padding: 2rem;
+      height: 400px;
+      width: 750px;
+    }
+  }
 
   #view {
     margin: 0 auto;
