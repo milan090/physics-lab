@@ -9,7 +9,7 @@
         >
       </h1>
       <p class="text-dim text-center fade-up">
-        Learning Physics by Visualising - the fastest, easiest, and retianable
+        Learning Physics by Visualising - the fastest, easiest, and retainable
         way of learning Physics
       </p>
       <div id="cta" class="fade-up">
