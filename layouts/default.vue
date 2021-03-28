@@ -1,7 +1,22 @@
 <template>
   <div>
-    <Nuxt />
-    <footer></footer>
+    <div id="body">
+      <Nuxt />
+    </div>
+    <footer>
+      <div class="text-center">
+        <span>Made by a nerd for nerds</span>
+        <span>|</span>
+        <a href="https://github.com/milan090/physics-lab" target="_blank "
+          >Find Physics Lab on Github</a
+        >
+        <div>
+          <a href="https://www.youtube.com/watch?v=j5a0jTc9S10" target="_blank"
+            >About</a
+          >
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -56,11 +71,33 @@ body {
   font-size: $font-base;
 }
 
+.text-center {
+  text-align: center;
+}
+
+#body {
+  min-height: 100vh;
+}
+
 footer {
   margin-top: 5rem;
   width: 100%;
-  height: 10rem;
+  height: 14rem;
   background: #20272f;
+  display: flex;
+
+  div {
+    margin: 0 auto;
+    margin-top: 3rem;
+  }
+
+  a {
+    color: #4d7bf2;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 h1.title,
