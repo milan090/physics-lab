@@ -142,5 +142,5 @@ export const initializeTrajectory = (
         Vector.magnitude(firingBall.velocity)
       );
     }
-  }, 1000 / 12);
+  }, 1000 / 30);
 };

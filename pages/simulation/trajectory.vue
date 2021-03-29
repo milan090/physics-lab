@@ -45,6 +45,11 @@ export default {
         },
       },
       graphOptions: {
+        elements: {
+          line: {
+            tension: 0.4, // disables bezier curves
+          },
+        },
         responsive: true,
         maintainAspectRatio: false,
         scales: {
@@ -128,10 +133,7 @@ export default {
     addData(x, y) {
       const newLabels = [...this.graphData.labels, x];
       const newData = [...this.graphData.datasets[0].data, y];
-      if (newLabels.length > 100) {
-        newLabels.shift();
-        newData.shift();
-      }
+
       this.graphData = {
         labels: newLabels,
         datasets: [
