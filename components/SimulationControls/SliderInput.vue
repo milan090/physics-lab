@@ -14,10 +14,11 @@
         :max="max"
         :value="value"
         :step="step"
-        @change="handleChange"
         :style="{
           background: `linear-gradient(to right, #2c5bd1 0%, #2c5bd1 ${valuePercentage}%, #434b5266 ${valuePercentage}%, #434b5266 100%)`,
         }"
+        @change="handleChange"
+        @input="handleInput"
       />
     </div>
   </div>
@@ -27,10 +28,22 @@
 export default {
   name: "SliderInput",
   props: {
-    name: String,
-    min: Number,
-    max: Number,
-    value: Number,
+    name: {
+      default: "Field",
+      type: String,
+    },
+    min: {
+      default: 0,
+      type: Number,
+    },
+    max: {
+      type: Number,
+      default: 10,
+    },
+    value: {
+      type: Number,
+      default: 5,
+    },
     step: {
       type: Number,
       default: 0.5,
@@ -45,6 +58,13 @@ export default {
     handleChange(event) {
       const newValue = parseFloat(event.target.value);
       this.$emit("options-change", this.name, newValue);
+    },
+    handleInput(event) {
+      const target = event.target;
+
+      const valuePercentage =
+        ((target.value - this.min) / (this.max - this.min)) * 100;
+      event.target.style.background = `linear-gradient(to right, #2c5bd1 0%, #2c5bd1 ${valuePercentage}%, #434b5266 ${valuePercentage}%, #434b5266 100%)`;
     },
   },
 };
