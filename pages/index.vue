@@ -84,9 +84,9 @@ export default {
         },
         {
           id: "6",
-          url: "/",
-          name: "More+",
-          img: "/img/preview/coming-soon.jpg",
+          url: "/simulation/friction",
+          name: "Friction",
+          img: "/img/preview/friction.jpg",
         },
       ],
     };
