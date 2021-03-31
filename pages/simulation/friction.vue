@@ -1,8 +1,17 @@
 <template>
   <main>
     <SimulationPageHeader title="Friction" />
-    <TabSwitcher />
-    <div id="view">
+    <TabSwitcher :hasMath="true" />
+
+    <div v-if="isMathTab" id="math">
+      <div class="content">
+        <img
+          src="https://www.gstatic.com/education/formulas2/355397047/en/friction_force.svg"
+          alt="friction equation"
+        />
+      </div>
+    </div>
+    <div v-if="activeTab !== 'MATH'" id="view">
       <div id="simulation-container">
         <canvas id="simulation"></canvas>
         <div class="buttons">
@@ -71,6 +80,12 @@ export default {
   computed: {
     simulationOptionsValue() {
       return this.$store.state.simulationOptions.options;
+    },
+    activeTab() {
+      return this.$store.state.tabs.activeTab;
+    },
+    isMathTab() {
+      return this.activeTab === "MATH";
     },
   },
   watch: {
